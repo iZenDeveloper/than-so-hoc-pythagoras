@@ -22,13 +22,14 @@ export function getGeminiClient(): GoogleGenAI | null {
 }
 
 export const CANDIDATE_MODELS = [
+  "gemini-3.8-flash",
+  "gemini-3.5-flash-lite",
   "gemini-2.5-flash",
-  "gemini-2.0-flash",
 ];
 
 export async function callGeminiWithResilience(
   generateParamsFn: (modelName: string) => any,
-  timeoutMs = 7000
+  timeoutMs = 25000
 ): Promise<string | null> {
   const ai = getGeminiClient();
   if (!ai) return null;
@@ -47,6 +48,7 @@ export async function callGeminiWithResilience(
         return (response as any).text;
       }
     } catch (err: any) {
+      console.error(`[gemini] ${model} failed:`, err?.status || "", err?.message || err);
       continue;
     }
   }
