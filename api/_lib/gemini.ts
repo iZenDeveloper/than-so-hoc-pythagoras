@@ -47,6 +47,7 @@ export async function callGeminiWithResilience(
       if (response && (response as any).text) {
         return (response as any).text;
       }
+      console.error(`[gemini] ${model} returned no text`, JSON.stringify((response as any)?.candidates?.[0]?.finishReason || (response as any)?.promptFeedback || null));
     } catch (err: any) {
       console.error(`[gemini] ${model} failed:`, err?.status || "", err?.message || err);
       continue;

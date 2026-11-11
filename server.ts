@@ -38,13 +38,14 @@ function getGeminiClient(): GoogleGenAI | null {
 // Resilient multi-model execution with exponential backoff and timeout protection
 // Official verified models in @google/genai SDK
 const CANDIDATE_MODELS = [
+  "gemini-3.8-flash",
+  "gemini-3.5-flash-lite",
   "gemini-2.5-flash",
-  "gemini-2.0-flash",
 ];
 
 async function callGeminiWithResilience(
   generateParamsFn: (modelName: string) => any,
-  timeoutMs = 7000
+  timeoutMs = 25000
 ): Promise<string | null> {
   const ai = getGeminiClient();
   if (!ai) return null;
