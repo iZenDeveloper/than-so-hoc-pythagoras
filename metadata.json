@@ -1,0 +1,6 @@
+{
+  "name": "Thần Số Học Pythagoras Chuyên Nghiệp",
+  "description": "Ứng dụng tra cứu, giải mã và bói thần số học Pythagoras toàn diện với biểu đồ ngày sinh, kim tự tháp 4 đỉnh cao, tương hợp cặp đôi và cố vấn AI chuyên sâu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
